@@ -1,0 +1,77 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url = "http://files.minecraftforge.net/maven" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'maven'
+
+version = "1.0"
+def env = System.getenv()
+if (env.BUILD_NUMBER) {
+    version = version + "-" + "${env.BUILD_NUMBER}"
+}
+
+group = "rsinfinitewireless"
+archivesBaseName = "rsinfinitewireless"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+minecraft {
+    version = "1.12.2-14.23.4.2703"
+    runDir = "run"
+    useDepAts = true
+    mappings = "snapshot_20180714"
+
+    replaceIn "RSInfiniteWireless.java"
+    replace "@version@", project.version
+}
+
+repositories {
+    maven {
+        url "https://repo.raoulvdberge.com"
+    }
+}
+
+dependencies {
+    deobfCompile "refinedstorage:refinedstorage:1.6.13-373"
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+
+        expand 'version': project.version, 'mcversion': project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+jar {
+    include "com/aang23/rsinfinitewireless/**"
+    include "assets/**"
+    include "mcmod.info"
+    include "pack.mcmeta"
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = project.group
+            artifactId = project.archivesBaseName
+            version = project.version
+            artifact sourceJar
+            artifact jar
+        }
+    }
+}

@@ -1,0 +1,15 @@
+[
+    {
+      "modid": "rsinfinitewireless",
+      "name": "Refined Storage Infinite Wireless",
+      "description": "Adds back the infinite wireless transmitter ! Based on Refined Storage Addons.",
+      "version": "${version}",
+      "mcversion": "1.12.2",
+      "url": "",
+      "updateUrl": "",
+      "authorList": ["Aang23"],
+      "credits": "",
+      "screenshots": [],
+      "dependencies": []
+    }
+]
