@@ -90,7 +90,7 @@ public class BlockInfiniteWirelessTransmitter extends BlockNode {
     public void addInformation(ItemStack stack, @Nullable World world, List<String> tooltip, ITooltipFlag flag) {
         super.addInformation(stack, world, tooltip, flag);
 
-        tooltip.add(I18n.format("block.rsinfinitewireless:wireless_transmitter.tooltip",
+        tooltip.add(I18n.format("block.refinedstorage:wireless_transmitter.tooltip",
                 TextFormatting.WHITE + I18n.format("block.refinedstorage:cable.name") + TextFormatting.GRAY));
     }
 }
