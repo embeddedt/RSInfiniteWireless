@@ -52,7 +52,7 @@ public class ProxyClient extends ProxyCommon {
             ItemStack slot = inv.getStackInSlot(i);
 
             if (slot.getItem() == search) {
-                RS.INSTANCE.network.sendToServer(new MessageNetworkItemOpen(i));
+                RS.INSTANCE.network.sendToServer(new MessageNetworkItemOpen(i, false));
 
                 return;
             }

@@ -1,6 +1,5 @@
 package com.aang23.rsinfinitewireless.proxy;
 
-import com.raoulvdberge.refinedstorage.apiimpl.util.OneSixMigrationHelper;
 import com.aang23.rsinfinitewireless.RSInfiniteWireless;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -55,6 +54,5 @@ public class ProxyCommon {
 
     @SubscribeEvent
     public void fixItemMappings(RegistryEvent.MissingMappings<Item> e) {
-        OneSixMigrationHelper.removalHook();
     }
 }
